@@ -10,17 +10,12 @@
     {{ partial "meta.html" . }}
 
     <title>{{ .Site.Title }}</title>
+    <link rel="icon" href="/favicon.ico" />
     <link rel="canonical" href="{{ .Permalink }}" />
-{{ $sitetitle := .Site.Title }}
-{{ with .OutputFormats.Get "RSS" }}
-    <link
-      href="{{ .RelPermalink }}"
-      rel="alternate"
-      type="application/rss+xml"
-      title="{{ $sitetitle }}"
-    />
-{{ end }}
-    {{ partial "head_includes.html" . }}
+
+    {{ $sitetitle := .Site.Title }} {{ with .OutputFormats.Get "RSS" }}
+    <link href="{{ .RelPermalink }}" rel="alternate" title="{{ $sitetitle }}" />
+    {{ end }} {{ partial "head_includes.html" . }}
   </head>
   <body
     lang="{{ .Site.LanguageCode }}"
